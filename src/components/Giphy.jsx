@@ -8,26 +8,26 @@ const Giphy = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-    const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
+  const fetchData = async () => {
+    setIsError(false);
+    setIsLoading(true);
 
-      try {
-        const results = await axios("https://api.giphy.com/v1/gifs/trending", {
-          params: {
-            api_key: "Kt88WlJH3B83KOdKYnWKcEW1oX6sICUk",
-            limit: 10
-          }
-        });
-        console.log(results);
-        setData(results.data.data);
-      } catch (err) {
-        setIsError(true);
-        setTimeout(() => setIsError(false), 4000);
-      }
+    try {
+      const results = await axios("https://api.giphy.com/v1/gifs/trending", {
+        params: {
+          api_key: "Kt88WlJH3B83KOdKYnWKcEW1oX6sICUk",
+          limit: 10
+        }
+      });
+      console.log(results);
+      setData(results.data.data);
+    } catch (err) {
+      setIsError(true);
+      setTimeout(() => setIsError(false), 4000);
+    }
 
-      setIsLoading(false);
-    };
+    setIsLoading(false);
+  };
 
 
   const renderGifs = () => {
