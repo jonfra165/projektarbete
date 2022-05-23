@@ -1,10 +1,12 @@
 import Giphy from './components/Giphy';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div>
+    <>
+      <Navbar/>
       <Giphy />
-    </div>
+    </>
   );
 }
 

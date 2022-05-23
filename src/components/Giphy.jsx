@@ -42,6 +42,7 @@ const Giphy = () => {
       );
     });
   };
+  
   const renderError = () => {
     if (isError) {
       return (
@@ -82,29 +83,29 @@ const Giphy = () => {
   };
 
   return (
-    <div className="m-2">
+    <div className="container">
+      <h1 className='display-5 fw-bold text-center mt-5'>GIF-dagboken</h1>
+      <p className='lead mb-4 text-center'>En bild säger mer än tusen ord, därför har vi skapat GIF-dagboken! Skriv hur du mår i sökfältet och välj en GIF för att börja!</p>
       {renderError()}
-      <form className="form-inline justify-content-center m-2">
+      <form className="">
         <input
           value={search}
           onClick={fetchData}
           onChange={handleSearchChange}
           type="text"
-          placeholder="search"
+          placeholder="Hur mår du idag?"
           className="form-control"
         />
         <button
           onClick={handleSubmit}
-          type="submit"
-          className="btn btn-primary mx-2 btn btn-primary btn-sm"
+          type="button"
+          className="btn btn-primary mt-2"
         >
           Sök
         </button>
       </form>
       
-      <div className="card" style={{width: "18rem"}}>{renderGifs()}</div>
-      
-      
+      <div>{renderGifs()}</div>    
     </div>
   );
 };
