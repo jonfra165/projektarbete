@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Spinner from "./Spinner";
 
@@ -8,7 +8,6 @@ const Giphy = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  useEffect(() => {
     const fetchData = async () => {
       setIsError(false);
       setIsLoading(true);
@@ -30,8 +29,6 @@ const Giphy = () => {
       setIsLoading(false);
     };
 
-    fetchData();
-  }, []);
 
   const renderGifs = () => {
     if (isLoading) {
@@ -90,6 +87,7 @@ const Giphy = () => {
       <form className="form-inline justify-content-center m-2">
         <input
           value={search}
+          onClick={fetchData}
           onChange={handleSearchChange}
           type="text"
           placeholder="search"
@@ -98,7 +96,7 @@ const Giphy = () => {
         <button
           onClick={handleSubmit}
           type="submit"
-          className="btn btn-primary mx-2btn btn-primary btn-sm"
+          className="btn btn-primary mx-2 btn btn-primary btn-sm"
         >
           Sök
         </button>
