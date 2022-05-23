@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "./Spinner";
+import Gif from "./Gif";
 
 const Giphy = () => {
   const [data, setData] = useState([]);
@@ -39,9 +40,7 @@ const Giphy = () => {
     }
     return data.map(el => {
       return (
-        <div key={el.id}>
-          <img alt="gif" src={el.images.fixed_height.url} />
-        </div>
+        <Gif id={el.id} url={el.images.fixed_height.url}/>
       );
     });
   };
