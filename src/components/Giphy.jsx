@@ -8,23 +8,27 @@ const Giphy = () => {
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  
 
-  const loadGifs = () => {
+  const getGifList = () => {
     var gifList = localStorage.getItem("gifList");
-    
-    if(gifList == null) {
+    if(gifList === null) {
 		// Det finns inget i localStorage, så vi skapar en tom lista där
 		localStorage.setItem("gifList", JSON.stringify([]));
-		// Returnerar en tom lista (= inga movies)
+		// Returnerar en tom lista (= inga gifs)
 		return [];
 	} else {
 		return JSON.parse(gifList);
-	}
   }
-  const saveToLocalStorage = (gifList) => {
-    let jsonGifs = JSON.stringify(gifList);
-    localStorage.setItem('gifList', JSON.stringify(jsonGifs));
+  
+  }
+  const saveToLocalStorage = (id, url) => {
+    var gifList = getGifList();
+    gifList.push({
+      "id": id,
+      "url": url
+  });
+  
+    localStorage.setItem('gifList', JSON.stringify(gifList));
   }
   
   const fetchData = async () => {
