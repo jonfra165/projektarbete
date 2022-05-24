@@ -8,7 +8,25 @@ const Giphy = () => {
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  
 
+  const loadGifs = () => {
+    var gifList = localStorage.getItem("gifList");
+    
+    if(gifList == null) {
+		// Det finns inget i localStorage, så vi skapar en tom lista där
+		localStorage.setItem("gifList", JSON.stringify([]));
+		// Returnerar en tom lista (= inga movies)
+		return [];
+	} else {
+		return JSON.parse(gifList);
+	}
+  }
+  const saveToLocalStorage = (gifList) => {
+    let jsonGifs = JSON.stringify(gifList);
+    localStorage.setItem('gifList', JSON.stringify(jsonGifs));
+  }
+  
   const fetchData = async () => {
     setIsError(false);
     setIsLoading(true);
@@ -26,10 +44,9 @@ const Giphy = () => {
       setIsError(true);
       setTimeout(() => setIsError(false), 4000);
     }
-
+    
     setIsLoading(false);
   };
-
 
   const renderGifs = () => {
     if (isLoading) {
@@ -37,7 +54,7 @@ const Giphy = () => {
     }
     return data.map(el => {
       return (
-        <Gif id={el.id} url={el.images.fixed_height.url}/>
+        <Gif id={el.id} url={el.images.fixed_height.url} saveToLocalStorage={saveToLocalStorage} />
       );
     });
   };
@@ -69,7 +86,7 @@ const Giphy = () => {
         params: {
           api_key: "Kt88WlJH3B83KOdKYnWKcEW1oX6sICUk",
           q: search,
-          limit: 50
+          limit: 10
         }
       });
       setData(results.data.data);
