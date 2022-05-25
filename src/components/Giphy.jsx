@@ -2,32 +2,35 @@ import React, { useState } from "react";
 import axios from "axios";
 import Spinner from "./Spinner";
 import Gif from "./Gif";
+import Diary from "./Diary";
 
 const Giphy = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [gifsInDiary, setGifsInDiary] = useState([]);
 
-  const getGifList = () => {
-    var gifList = localStorage.getItem("gifList");
-    if(gifList === null) {
-		// Det finns inget i localStorage, så vi skapar en tom lista där
-		localStorage.setItem("gifList", JSON.stringify([]));
-		// Returnerar en tom lista (= inga gifs)
-		return [];
-	} else {
-		return JSON.parse(gifList);
-  }
-  
-  }
+    const getGifList = () => {
+        var gifList = localStorage.getItem("gifList");
+        if(gifList === null) {
+            // Det finns inget i localStorage, så vi skapar en tom lista där
+            localStorage.setItem("gifList", JSON.stringify([]));
+            // Returnerar en tom lista (= inga gifs)
+        setGifsInDiary([]);
+        
+        } else {
+            setGifsInDiary(JSON.parse(gifList));
+        }
+    }
+    
   const saveToLocalStorage = (id, url) => {
     var gifList = getGifList();
     gifList.push({
       "id": id,
       "url": url
   });
-  
+
     localStorage.setItem('gifList', JSON.stringify(gifList));
   }
   
@@ -101,7 +104,7 @@ const Giphy = () => {
 
     setIsLoading(false);
   };
-
+  
   return (
     <div className="container">
       <h1 className='display-5 fw-bold text-center mt-5'>GIF-dagboken</h1>
@@ -126,6 +129,8 @@ const Giphy = () => {
       </form>
       
       <div>{renderGifs()}</div>    
+      <Diary gifList={ gifsInDiary } />
+
     </div>
   );
 };
