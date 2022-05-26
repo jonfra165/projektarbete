@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "./Spinner";
 import Gif from "./Gif";
@@ -10,6 +10,10 @@ const Giphy = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [gifsInDiary, setGifsInDiary] = useState([]);
+
+  useEffect(() => {
+    getGifList();
+  }, []);
 
     const getGifList = () => {
         var gifList = localStorage.getItem("gifList");
@@ -25,12 +29,13 @@ const Giphy = () => {
     }
     
   const saveToLocalStorage = (id, url) => {
-    var gifList = getGifList();
+    var gifList = [...gifsInDiary];
     gifList.push({
       "id": id,
       "url": url
   });
 
+    setGifsInDiary(gifList)
     localStorage.setItem('gifList', JSON.stringify(gifList));
   }
   
