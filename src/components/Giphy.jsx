@@ -28,23 +28,16 @@ const Giphy = () => {
     }
     
   const saveToLocalStorage = (id, url) => {
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-    
-    today = mm + '-' + dd + '-' + yyyy;
-
     var gifList = [...gifsInDiary];
-    var localLength = gifList.length
-    console.log(localLength)
-    if (gifList.length <=6)
-      gifList.push({
-      "id": id,
-      "url": url,
-      "date": today
-  });
-
+    if (gifList.length === 7) {
+      gifList.shift()
+    }
+    gifList.push({
+      id,
+      url,
+      date: new Date()
+    });
+  
     setGifsInDiary(gifList)
     localStorage.setItem('gifList', JSON.stringify(gifList)); 
   }
@@ -56,7 +49,7 @@ const Giphy = () => {
     return data.map(el => {
       return (
         <Gif id={el.id} url={el.images.fixed_height.url} saveToLocalStorage={saveToLocalStorage} />
-      );
+        );
     });
   };
   

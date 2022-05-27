@@ -13,7 +13,7 @@ const Diary = (props) => {
                                 <Gif id={el.id} url={el.url} />
                                 <div class="card-body d-flex flex-column">
                                     <div className="card-text">
-                                        2022-05-30
+                                        {new Date(el.date).toLocaleDateString()}
                                     </div>
                                 </div>
                             </div>
