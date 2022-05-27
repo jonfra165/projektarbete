@@ -3,8 +3,9 @@ import Gif from "./Gif";
 
 const Diary = (props) => {
     return (
-        <div className="container">
+        <>
             <h1 className='fw-bold mt-5'>Dagbok</h1>
+<<<<<<< HEAD
             <div className="row">
              {props.gifList.map( el => {
                  return (
@@ -15,10 +16,12 @@ const Diary = (props) => {
                     </div>
                 </div>
                  )
+=======
+                    return (
                 }
-             )}
+                )}
             </div>
-        </div>
+        </>
     );
 };
 
