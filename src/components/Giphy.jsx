@@ -35,14 +35,14 @@ const Giphy = () => {
       gifList.push({
       "id": id,
       "url": url,
-      "date": ""
+      "date": new Date()
     });
     else {
       gifList.shift();
       gifList.push({
         "id": id,
         "url": url,
-        "date": ""
+        "date": new Date()
       });
     }
    
