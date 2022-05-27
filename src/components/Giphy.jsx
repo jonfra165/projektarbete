@@ -95,25 +95,25 @@ const Giphy = () => {
   };
   
   return (
-    <>
+    <div className="container-fluid mt-5">
     <div className="row">
-      <h1 className='display-5 fw-bold text-center mt-5'>GIF-dagboken</h1>
-      <p className='lead mb-4 text-center'>En bild säger mer än tusen ord, därför har vi skapat GIF-dagboken! Skriv hur du mår i sökfältet och välj en GIF för att börja!</p>
+      <h1 className='display-3 fw-bold text-center mt-4'>GIF-dagboken</h1>
+      <p className='lead text-center'>En bild säger mer än tusen ord, därför har vi skapat GIF-dagboken! Skriv hur du mår i sökfältet och välj en GIF för att börja!</p>
       {renderError()}
     </div>
     <div className="row">
-      <form>
+      <form className="d-flex space-between mb-5">
         <input
           value={search}
           onChange={handleSearchChange}
-          type="text"
+          type="search"
           placeholder="Hur mår du idag?"
-          className="form-control"
+          className="form-control "
         />
         <button
           onClick={handleSubmit}
           type="button"
-          className="btn btn-primary m-2"
+          className="btn btn-primary ms-2"
         >
           Sök
         </button>
@@ -124,7 +124,7 @@ const Giphy = () => {
     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 d-flex align-items-stretch mb-3">{renderGifs()}</div>    
     <Diary gifList={ gifsInDiary } />
 
-    </>
+  </div>
   );
 };
 
