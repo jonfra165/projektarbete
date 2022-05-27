@@ -29,7 +29,7 @@ const Giphy = () => {
     
   const saveToLocalStorage = (id, url) => {
     var gifList = [...gifsInDiary];
-    if (gifList.length === 7) {
+    if (gifList.length === 6) {
       gifList.shift()
     }
     gifList.push({
