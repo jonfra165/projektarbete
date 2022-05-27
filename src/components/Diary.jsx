@@ -11,7 +11,7 @@ const Diary = (props) => {
                     <div className="card mt-2" style={{width: '10rem'}} >
                     <Gif id={el.id} url={el.url} />
                     <div className="card-body">
-                        <p className="card-text">24-05-2022</p>
+                        <p className="card-text">{el.date}</p>
                     </div>
                 </div>
                  )
