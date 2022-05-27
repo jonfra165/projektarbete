@@ -5,7 +5,9 @@ function App() {
   return (
     <>
       <Navbar/>
-      <div className="container"><Giphy /></div>
+      <div className="container">
+        <Giphy />
+      </div>
     </>
   );
 }
