@@ -40,6 +40,8 @@ const Giphy = () => {
   
     setGifsInDiary(gifList)
     localStorage.setItem('gifList', JSON.stringify(gifList)); 
+    setData([]);
+    setSearch('')
   }
   
   const renderGifs = () => {
