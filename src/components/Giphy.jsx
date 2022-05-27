@@ -21,8 +21,7 @@ const Giphy = () => {
             // Det finns inget i localStorage, så vi skapar en tom lista där
             localStorage.setItem("gifList", JSON.stringify([]));
             // Returnerar en tom lista (= inga gifs)
-        setGifsInDiary([]);
-        
+            setGifsInDiary([]);        
         } else {
             setGifsInDiary(JSON.parse(gifList));
         }
@@ -30,13 +29,27 @@ const Giphy = () => {
     
   const saveToLocalStorage = (id, url) => {
     var gifList = [...gifsInDiary];
-    gifList.push({
+    var localLength = gifList.length
+    console.log(localLength)
+    if (gifList.length <=6)
+      gifList.push({
       "id": id,
-      "url": url
-  });
-
+      "url": url,
+      "date": ""
+    });
+    else {
+      gifList.shift();
+      gifList.push({
+        "id": id,
+        "url": url,
+        "date": ""
+      });
+    }
+   
+  
+    console.log(gifList)
     setGifsInDiary(gifList)
-    localStorage.setItem('gifList', JSON.stringify(gifList));
+    localStorage.setItem('gifList', JSON.stringify(gifList)); 
   }
   
   const renderGifs = () => {
