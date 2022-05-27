@@ -39,27 +39,6 @@ const Giphy = () => {
     localStorage.setItem('gifList', JSON.stringify(gifList));
   }
   
-  const fetchData = async () => {
-    setIsError(false);
-    setIsLoading(true);
-
-    try {
-      const results = await axios("https://api.giphy.com/v1/gifs/trending", {
-        params: {
-          api_key: "Kt88WlJH3B83KOdKYnWKcEW1oX6sICUk",
-          limit: 10
-        }
-      });
-      console.log(results);
-      setData(results.data.data);
-    } catch (err) {
-      setIsError(true);
-      setTimeout(() => setIsError(false), 4000);
-    }
-    
-    setIsLoading(false);
-  };
-
   const renderGifs = () => {
     if (isLoading) {
       <Spinner />;
@@ -118,7 +97,6 @@ const Giphy = () => {
       <form className="">
         <input
           value={search}
-          onClick={fetchData}
           onChange={handleSearchChange}
           type="text"
           placeholder="Hur mår du idag?"
