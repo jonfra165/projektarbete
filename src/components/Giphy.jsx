@@ -85,7 +85,7 @@ const Giphy = () => {
         params: {
           api_key: "Kt88WlJH3B83KOdKYnWKcEW1oX6sICUk",
           q: search,
-          limit: 10
+          limit: 12
         }
       });
       setData(results.data.data);
@@ -98,11 +98,14 @@ const Giphy = () => {
   };
   
   return (
-    <div className="container">
+    <>
+    <div className="row">
       <h1 className='display-5 fw-bold text-center mt-5'>GIF-dagboken</h1>
       <p className='lead mb-4 text-center'>En bild säger mer än tusen ord, därför har vi skapat GIF-dagboken! Skriv hur du mår i sökfältet och välj en GIF för att börja!</p>
       {renderError()}
-      <form className="">
+    </div>
+    <div className="row">
+      <form>
         <input
           value={search}
           onChange={handleSearchChange}
@@ -113,16 +116,18 @@ const Giphy = () => {
         <button
           onClick={handleSubmit}
           type="button"
-          className="btn btn-primary mt-2"
+          className="btn btn-primary m-2"
         >
           Sök
         </button>
       </form>
-      
-      <div>{renderGifs()}</div>    
-      <Diary gifList={ gifsInDiary } />
-
     </div>
+      
+
+    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 d-flex align-items-stretch mb-3">{renderGifs()}</div>    
+    <Diary gifList={ gifsInDiary } />
+
+    </>
   );
 };
 

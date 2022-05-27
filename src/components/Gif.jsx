@@ -3,7 +3,7 @@ import React from "react";
 const Gif = (props) => {
    return (
     <div key={props.id}>
-      <img alt="gif" src={props.url} onClick={() => {props.saveToLocalStorage(props.id, props.url)}}/>
+      <img className="img-fluid rounded mx-auto d-block" alt="gif" src={props.url} onClick={() => {props.saveToLocalStorage(props.id, props.url)}}/>
     </div>
   );
 };
