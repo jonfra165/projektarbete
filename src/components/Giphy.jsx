@@ -15,17 +15,17 @@ const Giphy = () => {
     getGifList();
   }, []);
 
-    const getGifList = () => {
-        var gifList = localStorage.getItem("gifList");
-        if(gifList === null) {
-            // Det finns inget i localStorage, så vi skapar en tom lista där
-            localStorage.setItem("gifList", JSON.stringify([]));
-            // Returnerar en tom lista (= inga gifs)
-            setGifsInDiary([]);        
-        } else {
-            setGifsInDiary(JSON.parse(gifList));
-        }
-    }
+  const getGifList = () => {
+      var gifList = localStorage.getItem("gifList");
+      if(gifList === null) {
+          // Det finns inget i localStorage, så vi skapar en tom lista där
+          localStorage.setItem("gifList", JSON.stringify([]));
+          // Returnerar en tom lista (= inga gifs)
+          setGifsInDiary([]);        
+      } else {
+          setGifsInDiary(JSON.parse(gifList));
+      }
+  }
     
   const saveToLocalStorage = (id, url) => {
     var gifList = [...gifsInDiary];
