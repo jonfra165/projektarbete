@@ -48,9 +48,9 @@ const Giphy = () => {
     if (isLoading) {
       <Spinner />;
     }
-    return data.map(el => {
+    return data.map((el, i) =>  {
       return (
-        <Gif id={el.id} url={el.images.fixed_height.url} saveToLocalStorage={saveToLocalStorage} />
+        <Gif key={i} id={el.id} url={el.images.fixed_height.url} saveToLocalStorage={saveToLocalStorage} />
         );
     });
   };
@@ -121,7 +121,7 @@ const Giphy = () => {
     </div>
       
 
-    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 d-flex align-items-stretch mb-3">{renderGifs()}</div>    
+    <div className="row row-cols-2 row-cols-sm-4 row-cols-md-4 row-cols-lg-6 g-4 d-flex align-items-stretch mb-3">{renderGifs()}</div>    
     <Diary gifList={ gifsInDiary } />
 
   </div>

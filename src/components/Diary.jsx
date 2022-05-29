@@ -5,10 +5,10 @@ const Diary = (props) => {
     return (
         <>
             <h1 className='fw-bold mt-5' id="scrollspyDiary">Dagbok</h1>
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4 text-center d-flex align-items-stretch mb-3">
-                {props.gifList.map(el => {
+            <div className="row row-cols-2 row-cols-sm-4 row-cols-md-6 g-4 text-center d-flex align-items-stretch mb-3">
+                {props.gifList.map((el, i) => {
                     return (
-                        <div className="col">
+                        <div key={i} className="col">
                             <div className="card">
                                 <Gif id={el.id} url={el.url} />
                                 <div className="card-body d-flex flex-column">
