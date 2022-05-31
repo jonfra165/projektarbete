@@ -13,7 +13,6 @@ const Navbar = () => {
 
         <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a href="#scrollspyDiary" className="nav-link px-2 link-dark">Dagboken</a></li>
-            <li><a href="#" className="nav-link px-2 link-dark">Om oss</a></li>
         </ul>
     </header>
     </div>
