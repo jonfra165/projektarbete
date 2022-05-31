@@ -8,6 +8,7 @@ const Giphy = () => {
   const [search, setSearch] = useState("");
   const [isError, setIsError] = useState(false);
   const [gifsInDiary, setGifsInDiary] = useState([]);
+  const [validSearch, setValidSearch] = useState(true);
 
   useEffect(() => {
     getGifList();
@@ -63,6 +64,14 @@ const Giphy = () => {
     }
   };
 
+  const isValid = (valid) => {
+    return "form-control " + (valid ?'':'is-invalid')
+  };
+
+  const updateValidateSearch = (event) => {
+    setValidSearch(event.target.value !== "");
+  };
+
   const handleSearchChange = event => {
     setSearch(event.target.value);
   };
@@ -71,18 +80,22 @@ const Giphy = () => {
     event.preventDefault();
     setIsError(false);
     
-    try {
-      const results = await axios("https://api.giphy.com/v1/gifs/search", {
-        params: {
-          api_key: "Kt88WlJH3B83KOdKYnWKcEW1oX6sICUk",
-          q: search,
-          limit: 12
-        }
-      });
-      setData(results.data.data);
-    } catch (err) {
-      setIsError(true);
-      setTimeout(() => setIsError(false), 4000);
+    if (search.length > 0) {
+      try {
+        const results = await axios("https://api.giphy.com/v1/gifs/search", {
+          params: {
+            api_key: "Kt88WlJH3B83KOdKYnWKcEW1oX6sICUk",
+            q: search,
+            limit: 12
+          }
+        });
+        setData(results.data.data);
+      } catch (err) {
+        setIsError(true);
+        setTimeout(() => setIsError(false), 4000);
+      }
+    } else {
+      setValidSearch(false);
     }
   };
   
@@ -97,10 +110,13 @@ const Giphy = () => {
       <form className="d-flex space-between mb-5" onSubmit={handleSubmit}>
         <input
           value={search}
-          onChange={handleSearchChange}
+          onChange={(event) => {
+            handleSearchChange(event);
+            updateValidateSearch(event);
+          }}
           type="search"
           placeholder="Hur mår du idag?"
-          className="form-control "
+          className={isValid(validSearch)}
         />
         <button
           onClick={handleSubmit}
@@ -111,11 +127,8 @@ const Giphy = () => {
         </button>
       </form>
     </div>
-      
-
     <div className="row row-cols-2 row-cols-sm-4 row-cols-md-4 row-cols-lg-6 g-4 d-flex align-items-stretch mb-3">{renderGifs()}</div>    
     <Diary gifList={ gifsInDiary } />
-
   </div>
   );
 };
