@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Spinner from "./Spinner";
 import Gif from "./Gif";
 import Diary from "./Diary";
 
 const Giphy = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [gifsInDiary, setGifsInDiary] = useState([]);
 
@@ -45,9 +43,6 @@ const Giphy = () => {
   }
   
   const renderGifs = () => {
-    if (isLoading) {
-      <Spinner />;
-    }
     return data.map((el, i) =>  {
       return (
         <Gif key={i} id={el.id} url={el.images.fixed_height.url} saveToLocalStorage={saveToLocalStorage} />
@@ -75,7 +70,6 @@ const Giphy = () => {
   const handleSubmit = async event => {
     event.preventDefault();
     setIsError(false);
-    setIsLoading(true);
     
     try {
       const results = await axios("https://api.giphy.com/v1/gifs/search", {
@@ -90,8 +84,6 @@ const Giphy = () => {
       setIsError(true);
       setTimeout(() => setIsError(false), 4000);
     }
-
-    setIsLoading(false);
   };
   
   return (
