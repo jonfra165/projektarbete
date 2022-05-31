@@ -71,12 +71,12 @@ const Giphy = () => {
   const handleSearchChange = event => {
     setSearch(event.target.value);
   };
-
+ 
   const handleSubmit = async event => {
     event.preventDefault();
     setIsError(false);
     setIsLoading(true);
-
+    
     try {
       const results = await axios("https://api.giphy.com/v1/gifs/search", {
         params: {
@@ -102,7 +102,7 @@ const Giphy = () => {
       {renderError()}
     </div>
     <div className="row">
-      <form className="d-flex space-between mb-5">
+      <form className="d-flex space-between mb-5" onSubmit={handleSubmit}>
         <input
           value={search}
           onChange={handleSearchChange}
