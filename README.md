@@ -1,8 +1,14 @@
-# Getting Started with Create React App
+# GIF-dagboken
+
+Det må vara klyschigt men sant, en bild säger mer än tusen ord. Men vad gör då inte en GIF? Vi älskar GIF:s och det har varit en otroligt stor del av vår kommunikation under våra två första år på Malmö Universitet, där nästan hela denna period varit på distans.
+
+Vi ville därför hylla GIF:sen och det kändes självklart att försöka involvera dem i vårt projekt. Därför har vi skapat GIF-dagboken, som bilddagboken (nostalgi!) fast roligare! 
+
+Sök på det humör du känner dig på för stunden, t ex happy, sad eller angry (det fungerar på svenska men det ger inte lika många sökträffar) och när du hittat en GIF som representerar ditt mående, klicka på den så sparas den i din dagbok (tack vare local storage).
+
+## How to run the project
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
 
 In the project directory, you can run:
 
@@ -11,60 +17,22 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Vilket ramverk vi valt och varför
 
-### `npm test`
+## React
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+När vi hade bestämt att vi ville bygga någonting med Gifs, började vi söka runt efter ett lämpligt API vi skulle kunna använda oss av, och det var då vi hittade API:et GIPHY. GIPHY erbjuder två olika sätt att bygga en Gif-App med, del med API och dels med SDK som står för Software Development Kit. SDK använder något som heter React Native SDKsom erbjuder ett “paket” med bland annat färdiga omslag, uppvisning av gifs, användarvänligt gränssnitt och styling när man bygger en App). Vi valde bort SDK och körde på API, som innebär att man gör allting själv istället för att få det serverat.. och därför kollade vi vidare på vad andra hade valt för ramverk att arbeta med relaterat till det valda API:et. Många andra har valt just React och eftersom vi redan hade börjat lite smått i inlämning 6 så ville vi fortsätta på de spåret. React kanske är lite för stort för det vi skapat men att kunna jobba i React ser vi som en fördel då chansen finns att vi kommer att använda det i våra yrkesliv.  
 
-### `npm run build`
+För att anropa GIPHY har vi valt att använda oss av ett tredjeparts paket som heter **Axios**, som även gör det enklare att hantera data. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Angular
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Vi valde bort Angular i princip direkt då det sägs ha den högsta inlärningskurvan, med många begrepp och syntax. Ramverket har flera mindre inbyggda bibliotek som främst  är till hjälp när ett större och mer avancerat projekt ska byggas. Dessutom är Angular mer strikta om hur applikationen bör struktureras medan React ger mer frihet. Vi valde främst React framför Angular baserat på dess enkelhet och att vi inte bygger en komplex webbapplikation.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Vue
 
-### `npm run eject`
+Vue var ett alternativ vi funderade på då det sägs vara relativt enkelt att lära sig och att inlärningskurvan kan vara lägre än React. Vue ska vara ett bra alternativ till lite mindre projekt, vilket hade fungerat bra till vår webbapplikation. Men vi i gruppen diskuterade och bestämde oss för att gå med React då vi jobbat med det under kursens gång. Med Vue hade vi fått sätta oss in i nya begrepp och syntax vilket aldrig är fel men på grund av planering kändes React som ett säkrare kort. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Bootstrap
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Vi använde oss av Boostrap för att på ett enklare sätt, och med minimalt med css-kod, kunna få en snygg layout och design har vi valt att använda oss av Bootstrap. som vi blir allt bekvämare med och det känns mer tidseffektivt att använda sig av det när man väl fått ett grepp om det.
