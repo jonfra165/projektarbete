@@ -59,6 +59,12 @@ const Giphy = () => {
     });
   };
   
+  const renderDiary = () => {
+
+    return (
+      <Diary gifList={ diaryCurrentItems } />
+      );
+  };
   const renderError = () => {
     if (isError) {
       return (
@@ -146,14 +152,15 @@ const Giphy = () => {
         itemsPerPage={itemsPerPage}
         totalItems={data.length}
       />
-    <Diary gifList={ gifsInDiary } />
+    
+    {renderDiary()}
     <Paginate
-        pageSelected={pageSelected}
-        currentPage={currentPage}
-        itemsPerPage={itemsPerPage}
-        totalItems={gifsInDiary.length}
-      />
-  </div>
+      pageSelected={pageSelected}
+      currentPage={currentPage}
+      itemsPerPage={itemsPerPage}
+      totalItems={gifsInDiary.length}
+    />
+    </div>
   );
 };
 

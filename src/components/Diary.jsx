@@ -3,7 +3,7 @@ import Gif from "./Gif";
 
 const Diary = (props) => {
     return (
-        <div className="container bg-light border rounded-3">
+        <div className="container border-top rounded-3">
             <h1 className='fw-bold mt-2' id="scrollspyDiary">Dagbok</h1>
             <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4 text-center d-flex align-items-stretch mb-3">
                 {props.gifList.map((el, i) => {

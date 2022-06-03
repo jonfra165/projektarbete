@@ -9,7 +9,7 @@ const Paginate = props => {
 
   return (
     <nav>
-      <ul className="pagination justify-content-center">
+      <ul className="pagination justify-content-center mt-2">
         {pageNumbers.map(number => {
           let classes = "page-item ";
           if (number === props.currentPage) {
