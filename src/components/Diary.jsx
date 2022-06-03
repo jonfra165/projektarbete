@@ -11,7 +11,7 @@ const Diary = (props) => {
                         <div key={i} className="col">
                             <div className="card">
                                 <Gif id={el.id} url={el.url} />
-                                <div className="card-body d-flex flex-column">
+                                <div className="card-body d-flex flex-column p-1">
                                     <div className="card-text">
                                         {new Date(el.date).toLocaleDateString()}
                                     </div>
