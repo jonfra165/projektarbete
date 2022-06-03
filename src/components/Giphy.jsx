@@ -139,7 +139,7 @@ const Giphy = () => {
         <button
           onClick={handleSubmit}
           type="button"
-          className="btn btn-primary ms-2"
+          className="btn btn-dark ms-2"
         >
           Sök
         </button>
