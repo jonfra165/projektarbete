@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Gif from "./Gif";
 import Diary from "./Diary";
+import Paginate from "./Paginate";
 
 const Giphy = () => {
   const [data, setData] = useState([]);
@@ -9,6 +10,13 @@ const Giphy = () => {
   const [isError, setIsError] = useState(false);
   const [gifsInDiary, setGifsInDiary] = useState([]);
   const [validSearch, setValidSearch] = useState(true);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(12);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const diaryCurrentItems = gifsInDiary.slice(indexOfFirstItem, indexOfLastItem);
 
   useEffect(() => {
     getGifList();
@@ -28,7 +36,7 @@ const Giphy = () => {
     
   const saveToLocalStorage = (id, url) => {
     var gifList = [...gifsInDiary];
-    if (gifList.length === 6) {
+    if (gifList.length === 60) {
       gifList.shift()
     }
     gifList.push({
@@ -44,7 +52,7 @@ const Giphy = () => {
   }
   
   const renderGifs = () => {
-    return data.map((el, i) =>  {
+    return currentItems.map((el, i) =>  {
       return (
         <Gif key={i} id={el.id} url={el.images.fixed_height.url} saveToLocalStorage={saveToLocalStorage} />
         );
@@ -62,6 +70,10 @@ const Giphy = () => {
         </div>
       );
     }
+  };
+
+  const pageSelected = pageNumber => {
+    setCurrentPage(pageNumber);
   };
 
   const isValid = (valid) => {
@@ -86,7 +98,7 @@ const Giphy = () => {
           params: {
             api_key: "Kt88WlJH3B83KOdKYnWKcEW1oX6sICUk",
             q: search,
-            limit: 12
+            limit: 60
           }
         });
         setData(results.data.data);
@@ -128,7 +140,19 @@ const Giphy = () => {
       </form>
     </div>
     <div className="row row-cols-2 row-cols-sm-4 row-cols-md-4 row-cols-lg-6 g-4 d-flex align-items-stretch mb-3">{renderGifs()}</div>    
+    <Paginate
+        pageSelected={pageSelected}
+        currentPage={currentPage}
+        itemsPerPage={itemsPerPage}
+        totalItems={data.length}
+      />
     <Diary gifList={ gifsInDiary } />
+    <Paginate
+        pageSelected={pageSelected}
+        currentPage={currentPage}
+        itemsPerPage={itemsPerPage}
+        totalItems={gifsInDiary.length}
+      />
   </div>
   );
 };
