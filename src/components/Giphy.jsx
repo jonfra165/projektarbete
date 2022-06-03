@@ -33,7 +33,7 @@ const Giphy = () => {
           setGifsInDiary(JSON.parse(gifList));
       }
   }
-    
+  //Spara till localStorage, ta bort om mer än 60st sparade, rensa sök  
   const saveToLocalStorage = (id, url) => {
     var gifList = [...gifsInDiary];
     if (gifList.length === 60) {
